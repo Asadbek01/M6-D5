@@ -1,26 +1,20 @@
-// import pg from "pg";
-
-// const { see } = pg;
-
-// const pool = new Pool();
-
-// export const testDbConnection = async () => {
-//   try {
-//     await pool.query("SELECT NOW()");
-//     console.log("✅ Database connection is successful");
-//   } catch (error) {
-//     console.log("❌ Query failed", error);
-//   }
-// };
-
-// export default pool;
-
 import { Sequelize } from "sequelize";
 const { PGPORT, PGUSER, PGDATABASE, PGPASSWORD, PGHOST } = process.env;
+
 const sequelize = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
   port:PGPORT,
   host:PGHOST,
-  dialect: "postgres"
+  dialect: "postgres",
+
+   // if NODE_ENV === 'production' -->> provide dialectOptions : otherwise not
+  //  ...(NODE_ENV === "production" && {
+  //   dialectOptions: {
+  //     ssl: {
+  //       required: true,
+  //       rejectUnauthorized: false,
+  //     },
+  //   },
+  // }),
 });
 
 export const testDbConnection = async () => {

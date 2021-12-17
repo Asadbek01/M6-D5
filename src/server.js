@@ -7,6 +7,7 @@ import productRouter from './services/products/index.js'
 import reviewRouter from './services/reviews/reviews.js'
 import categoryRouter from './services/category/index.js'
 import usersRouter from './services/users/users.js'
+import CartRouter from "./services/shoppingCart/cart.js"
 import sequelize, { testDbConnection } from './utils/db/connect.js'
 
 
@@ -19,6 +20,7 @@ import sequelize, { testDbConnection } from './utils/db/connect.js'
  server.use('/reviews', reviewRouter)
  server.use("/categories", categoryRouter )
  server.use("/users", usersRouter)
+ server.use("/cart", CartRouter)
 
  server.listen( process.env.PORT || 3001 ,  async()=>{
      console.log(`Server is running with ${PORT}`)

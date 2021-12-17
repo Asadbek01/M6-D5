@@ -38,7 +38,7 @@ usersRouter.get("/", async (req, res, next) => {
         next(e);
       }
     })
-   usersRouter.get("/:id", async (req, res, next) => {
+   usersRouter.put("/:id", async (req, res, next) => {
     try {
         const updateUser = await Users.update(req.body, {
             where: {
